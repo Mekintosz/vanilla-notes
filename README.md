@@ -32,7 +32,6 @@ src/
  ├─ db/              # IndexedDB helpers
  ├─ ui/              # Rendering components
  └─ utils/           # Debounce, UUID, etc.
- 
 ```
 
 ---
