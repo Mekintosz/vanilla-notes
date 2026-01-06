@@ -1,5 +1,5 @@
 import { setState } from "./app/store.js";
-import { initDB, loadAll } from "./db/indexedDb.js";
+import { initDB, loadAll } from "./db/indexedDB.js";
 
 await initDB();
 
