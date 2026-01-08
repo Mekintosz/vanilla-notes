@@ -69,3 +69,15 @@ export function deleteFolder(folderId) {
     return next;
   });
 }
+
+export function selectFolder(folderId) {
+  setState((state) => {
+    const next = {
+      ...state,
+      selectedFolderId: folderId,
+    };
+
+    saveAll(next);
+    return next;
+  });
+}
