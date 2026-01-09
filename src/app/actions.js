@@ -75,6 +75,7 @@ export function selectFolder(folderId) {
     const next = {
       ...state,
       selectedFolderId: folderId,
+      selectedNoteId: null,
     };
 
     saveAll(next);
