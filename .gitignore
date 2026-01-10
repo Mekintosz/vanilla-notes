@@ -12,3 +12,5 @@ dist
 !.vscode/extensions.json
 
 vanilla-js-7-day-plan.md
+
+.cursor/*
