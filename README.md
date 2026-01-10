@@ -1,6 +1,6 @@
 # Vanilla Notes
 
-A simple client-side **Knowledge Manager / Notes app** built with **vanilla JavaScript**, designed to demonstrate **advanced JS concepts, state management, and browser APIs** without any backend.
+A simple client-side **Notes app** built with **vanilla JavaScript**, designed to demonstrate **advanced JS concepts, state management, and browser APIs** without any backend.
 
 ---
 
@@ -52,6 +52,7 @@ src/
 * Search notes across folders
 * Light/Dark theme toggle
 * Export / import notes as JSON
+* Text formating / toolbar
 
 ---
 
