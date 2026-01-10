@@ -1,6 +1,5 @@
-import { addFolder, deleteFolder, renameFolder, selectFolder } from "../app/actions.js";
+import { addFolder, deleteFolder, renameFolder, selectFolder } from "../app/folderActions.js";
 import { getState, subscribe } from "../app/store.js";
-import { uuid } from "../utils/uuid.js";
 
 const folderContainer = document.getElementById("folder-list");
 const newFolder = document.getElementById("new-folder-input");
