@@ -31,10 +31,10 @@ function createFolderItem({ id, name }, isSelected) {
 
   folderElement.type = "button";
   folderElement.className =
-    "flex w-full items-center gap-2 rounded-lg border border-gray-100 bg-white p-2 text-sm text-gray-700 shadow-sm transition-colors hover:bg-gray-100";
+    "flex w-full items-center gap-2 rounded-lg p-2 text-sm text-gray-700 shadow-sm transition-colors hover:bg-gray-100";
 
   if (isSelected) {
-    folderElement.classList.add("border,border-gray-100,bg-white");
+    folderElement.classList.add("border", "border-gray-100", "bg-white");
   }
 
   // Icon
@@ -76,7 +76,7 @@ function createFolderItem({ id, name }, isSelected) {
 newFolderButton.addEventListener("click", () => {
   const name = newFolder.value.trim();
   if (!name) return;
-  addFolder({ id: uuid(), name, createedAt: Date.now() });
+  addFolder(name);
   newFolder.value = "";
 });
 
