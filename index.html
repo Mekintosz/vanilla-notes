@@ -214,6 +214,22 @@
           </article>
         </div>
       </aside>
+      <!-- ---------------------------- No selected note editor screen ---------------------------- -->
+      <section class="flex-1 bg-white rounded-2xl shadow-soft hidden flex-col overflow-hidden" data-purpose="no-selected-note-screen">
+        <div class="h-full flex flex-col items-center justify-center p-12 text-center">
+        <div class="w-20 h-20 bg-gray-50 rounded-full flex items-center justify-center mb-6">
+        <i class="far fa-file-alt text-4xl text-gray-300"></i>
+        </div>
+        <h2 class="text-2xl font-semibold text-gray-800 mb-3">Select a note to view</h2>
+        <p class="text-gray-500 max-w-sm leading-relaxed mb-8">
+                        Choose a note from the list on the left or create a new one to get started.
+                    </p>
+        <button class="bg-teal-primary hover:bg-[#166A88] text-white font-medium py-3 px-6 rounded-lg shadow-sm transition-all flex items-center gap-2">
+        <i class="fas fa-plus"></i>
+        <span>Create New Note</span>
+        </button>
+        </div>
+        </section>
       <section
         class="shadow-soft flex flex-1 flex-col overflow-hidden rounded-2xl bg-white"
         data-purpose="editor"
@@ -222,17 +238,9 @@
           class="flex items-center justify-between border-b border-gray-100 px-8 py-6"
         >
           <div class="flex items-center gap-3">
-            <h1 class="text-2xl font-semibold tracking-tight text-gray-800">
-              Project Proposal - Q3
-            </h1>
-            <button
-              class="flex items-center gap-2 rounded border border-gray-200 bg-white px-3 py-1.5 text-sm text-gray-500 transition-colors hover:bg-gray-50 hover:text-gray-700"
-            >
-              <i class="far fa-edit"></i>
-              <span>Rename</span>
-            </button>
+            <input id="note-title" class="appearance-none border-none outline-none w-full text-2xl font-semibold tracking-tight text-gray-800" type="text" placeholder="Note Title">
           </div>
-          <div class="flex items-center gap-3">
+          <div class="grid grid-cols-[2fr_1fr] items-center gap-2">
             <button
               class="bg-teal-primary rounded-lg px-5 py-2 text-sm font-medium text-white shadow-sm transition-colors hover:bg-[#166A88]"
             >
@@ -242,6 +250,12 @@
               class="flex h-[38px] w-[38px] items-center justify-center rounded-lg border border-gray-200 bg-gray-100 text-gray-600 transition-colors hover:bg-gray-200"
             >
               <i class="far fa-trash-alt text-lg"></i>
+            </button>
+            <button
+              class="col-span-full place-self-center flex items-center gap-2 rounded border border-gray-200 bg-white px-3 py-1.5 text-sm text-gray-500 transition-colors hover:bg-gray-50 hover:text-gray-700"
+            >
+              <i class="far fa-edit"></i>
+              <span>Rename</span>
             </button>
           </div>
         </header>
@@ -295,36 +309,9 @@
       </div> -->
         <div class="flex-1 overflow-y-auto p-8" data-purpose="content-area">
           <div class="mx-auto max-w-2xl space-y-6">
-            <div
-              class="min-h-[500px] rounded-xl border border-gray-200 p-8 shadow-sm"
-            >
-              <h2 class="mb-4 text-lg font-bold text-gray-900">
-                ## Executive Summary
-              </h2>
-              <p class="mb-6 leading-7 text-gray-700">
-                This proposal outlines a comprehensive marketing strategy for
-                Q3, focusing on increasing user engagement and expanding our
-                reach into new demographics. Our primary goals are to...
-              </p>
-              <ul class="mb-6 space-y-3 leading-7 text-gray-700">
-                <li>
-                  <span class="font-bold text-gray-900">- **Objective 1:</span>
-                  Enhance brand visibility through targeted social media
-                  campaigns.
-                </li>
-                <li>
-                  <span class="font-bold text-gray-900">- **Objective 2:</span>
-                  Improve user retention by optimizing the onboarding process.
-                </li>
-                <li>
-                  <span class="font-bold text-gray-900">- **Objective 3:</span>
-                  Launch a new feature set to address user feedback.
-                </li>
-              </ul>
-              <p class="leading-7 text-gray-700">
-                The proposed budget for this initiative is...
-              </p>
-            </div>
+            
+            <textarea id="note-content" class="appearance-none outline-none w-full h-full resize-none min-h-[500px] rounded-xl border border-gray-200 p-8 shadow-sm"></textarea>
+          
           </div>
         </div>
       </section>
