@@ -53,6 +53,11 @@ src/
 * Light/Dark theme toggle
 * Export / import notes as JSON
 * Text formating / toolbar
+* Auto-save indicator (Saving… / Saved)
+* Empty state when no note selected
+* Read-only mode for locked notes
+* Fullscrean note preview
+* Cancel edits (snapshot + rollback)
 
 ---
 
