@@ -16,10 +16,6 @@ export function initDB() {
     };
 
     request.onsuccess = () => {
-      db.createObjectStore(STORE_NAME);
-    };
-
-    request.onsuccess = () => {
       db = request.result;
       resolve();
     };
