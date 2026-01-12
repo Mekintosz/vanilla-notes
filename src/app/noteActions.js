@@ -10,29 +10,12 @@ export function addNote(folderId, title, content) {
       title,
       content,
       createdAt: Date.now(),
+      updatedAt: Date.now(),
     };
     const next = {
       ...state,
       notes: [...state.notes, note],
       selectedNoteId: note.id,
-    };
-    saveAll(next);
-    return next;
-  });
-}
-
-export function renameNote(noteId, newTitle, newContent) {
-  const title = newTitle.trim();
-  const content = newContent.trim();
-  if (!title && !content) return;
-
-  setState((state) => {
-    const notes = state.notes.map((note) =>
-      note.id === noteId ? { ...note, title, content } : note
-    );
-    const next = {
-      ...state,
-      notes,
     };
     saveAll(next);
     return next;
@@ -59,6 +42,8 @@ export function deleteNote(noteId) {
     const next = {
       ...state,
       notes,
+      selectedNoteId:
+        state.selectedNoteId === noteId ? null : state.selectedNoteId,
     };
     saveAll(next);
     return next;

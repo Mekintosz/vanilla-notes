@@ -1,12 +1,13 @@
+import { selectNote } from "../app/noteActions.js";
 import { getState, subscribe } from "../app/store.js";
 import formatRelativeTime from "../utils/formatRelativeTime.js";
 
-const notesContainer = document.getElementById("note-list");
-
-const state = getState();
-const { notes, selectedFolderId, selectedNoteId } = state;
+const notesContainer = document.getElementById("notes-list");
 
 function renderNoteCards() {
+  const state = getState();
+  const { notes, selectedFolderId, selectedNoteId } = state;
+
   // Clear previous
   notesContainer.innerHTML = "";
 
@@ -75,7 +76,7 @@ function createNoteCardItem(note, isSelected) {
 
   // Click handler
   noteCard.addEventListener("click", () => {
-    selectNoteCard(note.id);
+    selectNote(note.id);
   });
 
   noteCard.append(header, preview, menu);

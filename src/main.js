@@ -3,6 +3,8 @@ import { initDB, loadAll } from "./db/indexedDB.js";
 import "./app/folderActions.js";
 import "./app/store.js";
 import "./ui/foldersList.js";
+import "./ui/noteEditor.js";
+import "./ui/notesList.js";
 
 await initDB();
 
