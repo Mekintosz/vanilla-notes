@@ -14,6 +14,7 @@ export function getState() {
 export function setState(updater) {
   const nextState = updater(state);
   state = nextState;
+  console.log("state updated", state);
   listeners.forEach((listener) => {
     listener();
   });
