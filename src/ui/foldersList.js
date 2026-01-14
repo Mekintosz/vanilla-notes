@@ -43,7 +43,7 @@ function createFolderItem({ id, name }, isSelected) {
 
   // Icon
   const icon = document.createElement("i");
-  icon.className = "fas fa-folder text-teal-primary";
+  icon.className = "fas fa-folder text-(--color-teal-primary)";
 
   // Text
   const text = document.createTextNode(name);
@@ -51,7 +51,7 @@ function createFolderItem({ id, name }, isSelected) {
   // Delete button
   const deleteButton = document.createElement("button");
   deleteButton.className =
-    "ml-auto hover:bg-teal-light text-text-muted hover:text-teal-primary transition-colors";
+    "ml-auto hover:bg-(--color-teal-light) text-(--color-text-muted) hover:text-(--color-teal-primary) transition-colors";
   const deleteIcon = document.createElement("i");
   deleteIcon.className = "far fa-trash-alt text-sm";
 

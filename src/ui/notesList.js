@@ -3,16 +3,21 @@ import { getState, subscribe } from "../app/store.js";
 import formatRelativeTime from "../utils/formatRelativeTime.js";
 
 const notesContainer = document.getElementById("notes-list");
+const noNotesMessage = document.createElement("p");
+const containerClasses = "grid place-items-center h-full text-gray-500";
 
 function renderNoteCards() {
   const state = getState();
   const { notes, selectedFolderId, selectedNoteId } = state;
 
   // Clear previous
+  notesContainer.className = "";
   notesContainer.innerHTML = "";
 
   if (notes.length === 0) {
-    notesContainer.innerHTML = "<p>No notes yet</p>";
+    notesContainer.className = containerClasses;
+    notesContainer.appendChild(noNotesMessage);
+    noNotesMessage.textContent = "No notes yet";
     return;
   }
 
@@ -21,7 +26,9 @@ function renderNoteCards() {
     : notes;
 
   if (visibleNotes.length === 0) {
-    notesContainer.innerHTML = "<p>No notes in this folder</p>";
+    notesContainer.className = containerClasses;
+    notesContainer.appendChild(noNotesMessage);
+    noNotesMessage.textContent = "No notes in this folder";
     return;
   }
 
@@ -42,7 +49,10 @@ function createNoteCardItem(note, isSelected) {
     "group relative cursor-pointer rounded-xl border border-gray-100 bg-white p-4 shadow-sm transition-all hover:border-gray-300";
 
   if (isSelected) {
-    noteCard.classList.add("border-teal-border", "bg-teal-light");
+    noteCard.classList.add(
+      "border-(--color-teal-border)",
+      "bg-(--color-teal-light)"
+    );
   }
 
   // Top row
@@ -54,7 +64,7 @@ function createNoteCardItem(note, isSelected) {
   title.textContent = note.title || "Untitled note";
 
   const time = document.createElement("span");
-  time.className = "text-text-muted shrink-0 text-xs";
+  time.className = "text-(--color-text-muted) shrink-0 text-xs";
   time.textContent = formatRelativeTime(note.updatedAt);
 
   header.append(title, time);
@@ -62,7 +72,7 @@ function createNoteCardItem(note, isSelected) {
   // Preview text
   const preview = document.createElement("p");
   preview.className =
-    "text-text-muted mb-1 line-clamp-2 text-xs leading-relaxed";
+    "text-(--color-text-muted) mb-1 line-clamp-2 text-xs leading-relaxed";
   preview.textContent = note.content || "";
 
   // Menu icon

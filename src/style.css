@@ -1,5 +1,18 @@
 @import "tailwindcss";
 
-.hide {
-  display: none;
+:root {
+  --font-sans: "Inter", sans-serif;
+
+  --color-teal-primary: #1682a8;
+  --color-teal-light: #eef7f9;
+  --color-teal-border: #8ec6d6;
+  --color-gray-bg: #edf1f5;
+  --color-text-dark: #1f2937;
+  --color-text-muted: #6b7280;
+
+  --shadow-card:
+    0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+
+  --shadow-soft:
+    0 10px 15px -3px rgba(0, 0, 0, 0.05), 0 4px 6px -2px rgba(0, 0, 0, 0.025);
 }
