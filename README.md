@@ -58,6 +58,9 @@ src/
 * Read-only mode for locked notes
 * Fullscrean note preview
 * Cancel edits (snapshot + rollback)
+* Debounce:
+    - Add leading flag to fire immediately and then suppress until idle
+    - Expose flush and cancel methods, abort pending work when unmounting
 
 ---
 

@@ -1,5 +1,6 @@
 import { addNote, deleteNote, updateNote } from "../app/noteActions.js";
-import { getState, setState, subscribe } from "../app/store.js";
+import { getState, subscribe } from "../app/store.js";
+import { debounce } from "../utils/debounce.js";
 
 const noteEditor = document.getElementById("note-editor");
 const noteTitle = document.getElementById("note-title");
@@ -33,6 +34,8 @@ function handleNoteSave() {
   if (!selectedNote) return;
   updateNote(selectedNote.id, {
     ...selectedNote,
+    title: noteTitle.value,
+    content: noteContent.value,
     updatedAt: Date.now(),
   });
 }
@@ -59,8 +62,8 @@ function handleNoteDeleteClick() {
     deleteNote(selectedNote.id);
   }
 }
-/* 
-function handleNoteTitleInput() {
+
+const debouncedNoteUpdate = debounce(() => {
   const state = getState();
   const selectedNote = state.notes.find(
     (note) => note.id === state.selectedNoteId
@@ -69,30 +72,17 @@ function handleNoteTitleInput() {
   updateNote(selectedNote.id, {
     ...selectedNote,
     title: noteTitle.value,
-    updatedAt: Date.now(),
-  });
-}
-
-function handleNoteContentInput() {
-  const state = getState();
-  const selectedNote = state.notes.find(
-    (note) => note.id === state.selectedNoteId
-  );
-  if (!selectedNote) return;
-  updateNote(selectedNote.id, {
-    ...selectedNote,
     content: noteContent.value,
     updatedAt: Date.now(),
   });
-}
-*/
+}, 500);
 
 noteSaveButton.addEventListener("click", handleNoteSave);
 newNoteButton.addEventListener("click", handleNewNoteClick);
 createNoteButton.addEventListener("click", handleNewNoteClick);
 noteDeleteButton.addEventListener("click", handleNoteDeleteClick);
-//noteTitle.addEventListener("input", handleNoteTitleInput);
-//noteContent.addEventListener("input", handleNoteContentInput);
+noteTitle.addEventListener("input", debouncedNoteUpdate);
+noteContent.addEventListener("input", debouncedNoteUpdate);
 
 subscribe(renderNoteEditor);
 renderNoteEditor();
