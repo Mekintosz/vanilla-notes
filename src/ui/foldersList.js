@@ -1,4 +1,9 @@
-import { addFolder, deleteFolder, renameFolder, selectFolder } from "../app/folderActions.js";
+import {
+  addFolder,
+  deleteFolder,
+  renameFolder,
+  selectFolder,
+} from "../app/folderActions.js";
 import { getState, subscribe } from "../app/store.js";
 
 const folderContainer = document.getElementById("folder-list");
@@ -30,7 +35,7 @@ function createFolderItem({ id, name }, isSelected) {
 
   folderElement.type = "button";
   folderElement.className =
-    "flex w-full items-center gap-2 rounded-lg p-2 text-sm text-gray-700 shadow-sm transition-colors hover:bg-gray-100";
+    "flex w-full items-center w-full gap-2 rounded-lg p-2 text-sm text-gray-700 shadow-sm transition-colors hover:bg-gray-100";
 
   if (isSelected) {
     folderElement.classList.add("border", "border-gray-100", "bg-white");
@@ -45,7 +50,12 @@ function createFolderItem({ id, name }, isSelected) {
 
   // Delete button
   const deleteButton = document.createElement("button");
-  deleteButton.textContent = "Delete";
+  deleteButton.className =
+    "ml-auto hover:bg-teal-light text-text-muted hover:text-teal-primary transition-colors";
+  const deleteIcon = document.createElement("i");
+  deleteIcon.className = "far fa-trash-alt text-sm";
+
+  deleteButton.append(deleteIcon);
   deleteButton.addEventListener("click", (e) => {
     e.stopPropagation(); //prevent selection
     if (confirm(`Delete folder ${name}?`)) {
