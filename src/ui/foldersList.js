@@ -9,11 +9,20 @@ import { getState, subscribe } from "../app/store.js";
 const folderContainer = document.getElementById("folder-list");
 const newFolder = document.getElementById("new-folder-input");
 const newFolderButton = document.getElementById("new-folder-button");
+const allNotesButton = document.getElementById("all-notes-button");
+
+const selectedClasses = ["border", "border-gray-100", "bg-white"];
 
 function renderFolders() {
   const state = getState();
   const folders = state.folders;
   const selectedFolderId = state.selectedFolderId;
+
+  // Highlight "All Notes" when no folder is selected
+  allNotesButton.classList.remove(...selectedClasses);
+  if (!selectedFolderId) {
+    allNotesButton.classList.add(...selectedClasses);
+  }
 
   // Clear previouse
   folderContainer.innerHTML = "";
@@ -35,7 +44,7 @@ function createFolderItem({ id, name }, isSelected) {
 
   folderElement.type = "button";
   folderElement.className =
-    "flex w-full items-center w-full gap-2 rounded-lg p-2 text-sm text-gray-700 shadow-sm transition-colors hover:bg-gray-100";
+    "flex w-full items-center gap-2 rounded-lg p-2 text-left text-sm text-gray-700 shadow-sm transition-colors hover:bg-gray-100";
 
   if (isSelected) {
     folderElement.classList.add("border", "border-gray-100", "bg-white");
@@ -87,6 +96,10 @@ newFolderButton.addEventListener("click", () => {
   if (!name) return;
   addFolder(name);
   newFolder.value = "";
+});
+
+allNotesButton.addEventListener("click", () => {
+  selectFolder(null);
 });
 
 // Subscribe to store changes

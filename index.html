@@ -47,16 +47,16 @@
   </head>
 
   <body
-    class="bg-(--color-gray-bg) text-(--color-text-dark) flex min-h-screen flex-col items-center font-sans"
+    class="flex min-h-screen flex-col items-center bg-(--color-gray-bg) font-sans text-(--color-text-dark)"
   >
     <header
       class="z-10 flex h-16 w-full shrink-0 items-center justify-between border-b border-gray-200 bg-white/80 px-6 backdrop-blur-sm lg:px-8"
     >
       <div class="flex items-center gap-3">
         <div
-          class="bg-(--color-teal-primary)/10 flex h-8 w-8 items-center justify-center rounded-lg"
+          class="flex h-8 w-8 items-center justify-center rounded-lg bg-(--color-teal-primary)/10"
         >
-          <i class="fas fa-leaf text-(--color-teal-primary) text-sm"></i>
+          <i class="fas fa-leaf text-sm text-(--color-teal-primary)"></i>
         </div>
         <h1 class="text-lg font-bold tracking-tight text-gray-800">
           Vanilla Notes
@@ -64,17 +64,17 @@
       </div>
       <div class="flex items-center gap-4">
         <button
-          class="hover:text-(--color-teal-primary) flex h-8 w-8 items-center justify-center rounded-full text-gray-400 transition-colors hover:bg-gray-100"
+          class="flex h-8 w-8 items-center justify-center rounded-full text-gray-400 transition-colors hover:bg-gray-100 hover:text-(--color-teal-primary)"
         >
           <i class="far fa-bell"></i>
         </button>
         <button
-          class="hover:text-(--color-teal-primary) flex h-8 w-8 items-center justify-center rounded-full text-gray-400 transition-colors hover:bg-gray-100"
+          class="flex h-8 w-8 items-center justify-center rounded-full text-gray-400 transition-colors hover:bg-gray-100 hover:text-(--color-teal-primary)"
         >
           <i class="fas fa-cog"></i>
         </button>
         <div
-          class="from-(--color-teal-primary) ml-2 flex h-8 w-8 items-center justify-center rounded-full bg-gradient-to-br to-cyan-600 text-xs font-bold text-white shadow-sm"
+          class="ml-2 flex h-8 w-8 items-center justify-center rounded-full bg-linear-to-br from-(--color-teal-primary) to-cyan-600 text-xs font-bold text-white shadow-sm"
         >
           MM
         </div>
@@ -84,40 +84,44 @@
       class="flex h-full w-full max-w-[1100px] flex-col gap-6 p-8 lg:flex-row"
     >
       <div
-        class="bg-(--color-gray-bg) flex w-full shrink-0 flex-col rounded-2xl p-5 lg:w-[180px]"
+        class="flex w-full shrink-0 flex-col rounded-2xl bg-(--color-gray-bg) p-5 lg:w-[180px]"
         data-purpose="folders-panel"
       >
         <h2 class="mb-4 text-lg font-semibold text-gray-700">Folders</h2>
-        <div class="flex flex-1 flex-col space-y-2 overflow-y-auto pr-1">
-          <a
-            class="flex items-center gap-2 rounded-lg p-2 text-sm text-gray-700 transition-colors hover:bg-gray-100"
-            href="#"
+        <div class="flex flex-col space-y-2">
+          <button
+            type="button"
+            id="all-notes-button"
+            class="flex items-center gap-2 rounded-lg p-2 text-left text-sm text-gray-700 transition-colors hover:bg-gray-100"
           >
             <i class="fas fa-folder text-(--color-teal-primary)"></i>
             All Notes
-          </a>
-          <div id="folder-list"></div>
+          </button>
+          <div
+            id="folder-list"
+            class="flex flex-col space-y-2 overflow-y-auto"
+          ></div>
           <button
             id="new-folder-button"
-            class="text-(--color-teal-primary) flex items-center gap-2 rounded-lg p-2 text-sm transition-colors hover:bg-gray-100"
+            class="flex items-center gap-2 rounded-lg p-2 text-sm text-(--color-teal-primary) transition-colors hover:bg-gray-100"
           >
             <i class="fas fa-plus"></i>
             <input
               id="new-folder-input"
-              class="placeholder-(--color-teal-primary) focus:border-(--color-teal-primary) w-full border-0 bg-transparent px-0 py-2 text-sm focus:placeholder-transparent"
+              class="w-full border-0 bg-transparent px-0 py-2 text-sm placeholder-(--color-teal-primary) focus:border-(--color-teal-primary) focus:placeholder-transparent"
               placeholder="New Folder"
             />
           </button>
         </div>
       </div>
       <aside
-        class="shadow-(--shadow-soft) flex w-full shrink-0 flex-col rounded-2xl bg-white p-5 lg:w-[350px]"
+        class="flex w-full shrink-0 flex-col rounded-2xl bg-white p-5 shadow-(--shadow-soft) lg:w-[350px]"
         data-purpose="sidebar"
       >
         <div class="mb-4">
           <button
             id="new-note-button"
-            class="bg-(--color-teal-primary) flex w-full items-center justify-center gap-2 rounded-lg px-4 py-3 font-medium text-white shadow-sm transition-colors hover:bg-[#166A88]"
+            class="flex w-full items-center justify-center gap-2 rounded-lg bg-(--color-teal-primary) px-4 py-3 font-medium text-white shadow-sm transition-colors hover:bg-[#166A88]"
           >
             <i class="fas fa-plus"></i>
             <span>New Note</span>
@@ -130,69 +134,19 @@
             <i class="fas fa-search text-gray-400"></i>
           </div>
           <input
-            class="focus:ring-(--color-teal-primary) w-full rounded-lg border border-gray-300 bg-white py-2 pr-4 pl-10 text-sm text-gray-600 placeholder-gray-400 focus:border-transparent focus:ring-2 focus:outline-none"
+            class="w-full rounded-lg border border-gray-300 bg-white py-2 pr-4 pl-10 text-sm text-gray-600 placeholder-gray-400 focus:border-transparent focus:ring-2 focus:ring-(--color-teal-primary) focus:outline-none"
             placeholder="Search"
             type="text"
           />
         </div>
-        <div id="notes-list" class="flex-1 space-y-3 overflow-y-auto pr-1">
-          <article
-            class="group border-(--color-teal-border) bg-(--color-teal-light) relative cursor-pointer rounded-xl border p-4 shadow-sm transition-all"
-          >
-            <div class="mb-1 flex items-start justify-between">
-              <h3 class="truncate pr-2 text-sm font-semibold text-gray-900">
-                Project Proposal - Q3
-              </h3>
-              <span class="text-(--color-text-muted) shrink-0 text-xs">2 days ago</span>
-            </div>
-            <p
-              class="text-(--color-text-muted) mb-1 line-clamp-2 text-xs leading-relaxed"
-            >
-              Draft the outline for the new marketing strategy...
-            </p>
-            <div class="absolute right-3 bottom-3 opacity-60 hover:opacity-100">
-              <i class="fas fa-ellipsis-h text-gray-400"></i>
-            </div>
-          </article>
-          <article
-            class="group relative cursor-pointer rounded-xl border border-gray-100 bg-white p-4 shadow-sm transition-all hover:border-gray-300"
-          >
-            <div class="mb-1 flex items-start justify-between">
-              <h3
-                class="truncate pr-2 text-sm font-semibold text-gray-900"
-              ></h3>
-              <span class="text-(--color-text-muted) shrink-0 text-xs">2 days ago</span>
-            </div>
-            <p
-              class="text-(--color-text-muted) mb-1 line-clamp-2 text-xs leading-relaxed"
-            ></p>
-            <div class="absolute right-3 bottom-3 opacity-60 hover:opacity-100">
-              <i class="fas fa-ellipsis-h text-gray-400"></i>
-            </div>
-          </article>
-          <article
-            class="group relative cursor-pointer rounded-xl border border-gray-100 bg-white p-4 shadow-sm transition-all hover:border-gray-300"
-          >
-            <div class="mb-1 flex items-start justify-between">
-              <h3 class="truncate pr-2 text-sm font-semibold text-gray-900">
-                Ideas for Blog
-              </h3>
-              <span class="text-(--color-text-muted) shrink-0 text-xs">2 days ago</span>
-            </div>
-            <p
-              class="text-(--color-text-muted) mb-1 line-clamp-2 text-xs leading-relaxed"
-            >
-              Draft the outline for the new marketing strategy...
-            </p>
-            <div class="absolute right-3 bottom-3 opacity-60 hover:opacity-100">
-              <i class="fas fa-ellipsis-h text-gray-400"></i>
-            </div>
-          </article>
-        </div>
+        <div
+          id="notes-list"
+          class="flex-1 space-y-3 overflow-y-auto pr-1"
+        ></div>
       </aside>
       <!-- ---------------------------- No selected note editor screen ---------------------------- -->
       <section
-        class="shadow-(--shadow-soft) hidden flex-1 flex-col overflow-hidden rounded-2xl bg-white"
+        class="hidden flex-1 flex-col overflow-hidden rounded-2xl bg-white shadow-(--shadow-soft)"
         data-purpose="no-selected-note-screen"
       >
         <div
@@ -212,7 +166,7 @@
           </p>
           <button
             id="create-note-button"
-            class="bg-(--color-teal-primary) flex items-center gap-2 rounded-lg px-6 py-3 font-medium text-white shadow-sm transition-all hover:bg-[#166A88]"
+            class="flex items-center gap-2 rounded-lg bg-(--color-teal-primary) px-6 py-3 font-medium text-white shadow-sm transition-all hover:bg-[#166A88]"
           >
             <i class="fas fa-plus"></i>
             <span>Create New Note</span>
@@ -222,24 +176,24 @@
       <!-- ------------------------- Selected note editor screen ---------------------------- -->
       <section
         id="note-editor"
-        class="shadow-(--shadow-soft) flex flex-1 flex-col overflow-hidden rounded-2xl bg-white"
+        class="flex flex-1 flex-col overflow-hidden rounded-2xl bg-white shadow-(--shadow-soft)"
         data-purpose="editor"
       >
         <header
           class="flex items-center justify-between border-b border-gray-100 px-8 py-6"
         >
           <div class="flex items-center gap-3">
-            <input
+            <textarea
               id="note-title"
-              class="w-full appearance-none border-none text-2xl font-semibold tracking-tight text-gray-800 outline-none"
+              class="h-fit w-full appearance-none border-none text-2xl font-semibold tracking-tight text-gray-800 outline-none"
               type="text"
               placeholder="Note Title"
-            />
+            ></textarea>
           </div>
-          <div class="grid grid-cols-[2fr_1fr] items-center gap-2">
+          <div class="flex flex-col items-end gap-2">
             <button
               id="note-save-button"
-              class="bg-(--color-teal-primary) rounded-lg px-5 py-2 text-sm font-medium text-white shadow-sm transition-colors hover:bg-[#166A88]"
+              class="rounded-lg bg-(--color-teal-primary) px-5 py-2 text-sm font-medium text-white shadow-sm transition-colors hover:bg-[#166A88]"
             >
               Save
             </button>

@@ -54,13 +54,14 @@ src/
 * Export / import notes as JSON
 * Text formating / toolbar
 * Auto-save indicator (Saving… / Saved)
-* Empty state when no note selected
+* Empty state when no note selected 
 * Read-only mode for locked notes
 * Fullscrean note preview
 * Cancel edits (snapshot + rollback)
 * Debounce:
     - Add leading flag to fire immediately and then suppress until idle
     - Expose flush and cancel methods, abort pending work when unmounting
+* Drag and drop functionality (move notes between folders)
 
 ---
 

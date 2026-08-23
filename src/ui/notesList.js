@@ -4,7 +4,8 @@ import formatRelativeTime from "../utils/formatRelativeTime.js";
 
 const notesContainer = document.getElementById("notes-list");
 const noNotesMessage = document.createElement("p");
-const containerClasses = "grid place-items-center h-full text-gray-500";
+const loadedContainerClases = "flex-1 space-y-3 overflow-y-auto pr-1";
+const emptyContainerClasses = "grid place-items-center h-full text-gray-500";
 
 function renderNoteCards() {
   const state = getState();
@@ -15,7 +16,7 @@ function renderNoteCards() {
   notesContainer.innerHTML = "";
 
   if (notes.length === 0) {
-    notesContainer.className = containerClasses;
+    notesContainer.className = emptyContainerClasses;
     notesContainer.appendChild(noNotesMessage);
     noNotesMessage.textContent = "No notes yet";
     return;
@@ -26,13 +27,14 @@ function renderNoteCards() {
     : notes;
 
   if (visibleNotes.length === 0) {
-    notesContainer.className = containerClasses;
+    notesContainer.className = emptyContainerClasses;
     notesContainer.appendChild(noNotesMessage);
     noNotesMessage.textContent = "No notes in this folder";
     return;
   }
 
   // Render notes
+  notesContainer.className = loadedContainerClases;
   visibleNotes
     .slice()
     .sort((a, b) => b.createdAt - a.createdAt)
